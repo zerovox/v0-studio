@@ -28,12 +28,9 @@ export default async function markdownToHtml(markdown: string) {
 
   const footnoteCallback = (identifier: string, blocks: Node[]) => {
     for (const content of blocks) {
-      const block = unified()
-        .use(identityNodeParser, { content })
-        .use(html)
-        .processSync("");
-      footnoteHtmlByIdentifier[identifier] =
-        footnoteHtmlByIdentifier[identifier] ?? "";
+      const block = unified().use(identityNodeParser, { content }).use(html).processSync("");
+
+      footnoteHtmlByIdentifier[identifier] = footnoteHtmlByIdentifier[identifier] ?? "";
       footnoteHtmlByIdentifier[identifier] += block.toString();
     }
   };

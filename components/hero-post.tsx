@@ -11,14 +11,7 @@ type Props = {
   slug: string;
 };
 
-const HeroPost = ({
-  title,
-  coverImage,
-  date,
-  excerpt,
-  author,
-  slug,
-}: Props) => {
+const HeroPost = ({ title, coverImage, date, excerpt, author, slug }: Props) => {
   return (
     <section>
       <div className="md:grid md:grid-cols-2 md:col-gap-16 lg:col-gap-8 mb-20 md:mb-28">

@@ -34,9 +34,7 @@ const Post = ({ post }: Props) => {
                 <title>
                   {post.title} | {PAGE_TITLE}
                 </title>
-                {post.ogImage && (
-                  <meta property="og:image" content={post.ogImage.url} />
-                )}
+                {post.ogImage && <meta property="og:image" content={post.ogImage.url} />}
               </Head>
               <PostHeader
                 title={post.title}

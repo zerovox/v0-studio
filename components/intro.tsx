@@ -4,9 +4,7 @@ const Intro = () => {
       <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8">
         v0 studio
       </h1>
-      <h4 className="text-center md:text-left text-lg mt-5 md:pl-8">
-        zero to v0
-      </h4>
+      <h4 className="text-center md:text-left text-lg mt-5 md:pl-8">zero to v0</h4>
     </section>
   );
 };

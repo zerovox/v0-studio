@@ -8,15 +8,12 @@ export default function (settings: {
   footnoteCallback: (identifier: string, content: Node[]) => void;
 }): Transformer {
   return function transformer(tree, file): void {
-    visit<FootnoteDefinition>(
-      tree,
-      "footnoteDefinition",
-      (node, index, parent) => {
-        settings.footnoteCallback(node.identifier, node.children);
-        parent?.children.splice(index, 1);
-        return [visit.SKIP, index];
-      }
-    );
+    visit<FootnoteDefinition>(tree, "footnoteDefinition", (node, index, parent) => {
+      settings.footnoteCallback(node.identifier, node.children);
+      parent?.children.splice(index, 1);
+      return [visit.SKIP, index];
+    });
+
     visit<Footnote>(tree, "footnote", (node, index, parent) => {
       const identifier = settings.generateIdentifier();
       settings.footnoteCallback(identifier, node.children as Node[]);
@@ -28,6 +25,7 @@ export default function (settings: {
       });
       return [visit.SKIP, index];
     });
+
     visit<FootnoteReference>(tree, "footnoteReference", (node) => {
       // TODO: anything useful to do here?
       // console.log(node);
