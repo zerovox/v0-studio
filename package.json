@@ -1,6 +1,6 @@
 {
   "name": "v0-studio",
-  "version": "0",
+  "version": "0.1.0",
   "scripts": {
     "dev": "next",
     "build": "next build && next export",
