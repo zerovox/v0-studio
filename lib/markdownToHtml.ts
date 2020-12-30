@@ -10,7 +10,7 @@ function identityNodeParser(this: Processor<unknown>, settings: { content: Node 
   this.Parser = (_text: string, _file: VFile) => settings.content;
 }
 
-export default async function markdownToHtml(markdown: string) {
+export default function markdownToHtml(markdown: string) {
   const footnoteHtmlByIdentifier: { [ident: string]: string } = {};
 
   const generateIdentifier = () => {
@@ -36,11 +36,10 @@ export default async function markdownToHtml(markdown: string) {
     }
   };
 
-  const result = await remark()
+  return remark()
     .use(footnotes, { inlineNotes: true })
     .use(extractFootnotes, { footnoteCallback, generateIdentifier })
     .use(html)
-    .process(markdown);
-
-  return result.toString();
+    .process(markdown)
+    .then((result) => ({ content: result.toString(), footnotes: footnoteHtmlByIdentifier }));
 }

@@ -4,6 +4,9 @@ type PostType = {
   date: string;
   excerpt: string;
   content: string;
+  footnotes: {
+    [identifier: string]: string;
+  };
 };
 
 export default PostType;
