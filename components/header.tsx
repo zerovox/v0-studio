@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import {PAGE_TITLE} from "../lib/constants";
+import Link from "next/link";
+import { PAGE_TITLE } from "../lib/constants";
 
 const Header = () => {
   return (
@@ -9,7 +9,7 @@ const Header = () => {
       </Link>
       .
     </h2>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

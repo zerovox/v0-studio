@@ -1,7 +1,7 @@
 ---
-title: '2020 in Review'
-excerpt: 'Well.'
-date: '2020-03-16T05:35:07.322Z'
+title: "2020 in Review"
+excerpt: "Well."
+date: "2020-03-16T05:35:07.322Z"
 author:
   name: Tim
 ---
@@ -17,7 +17,6 @@ Tristique^[whoop.] senectus et netus et malesuada fames ac turpis. Ridiculous mu
 Here is a footnote reference[^1], another[^†], and optionally there are inline notes.^[you can type them inline, which may be easier, since you don’t have to pick an identifier and move down to type the note.]
 
 [^1]: Here is the footnote.
-
 [^†]: Here’s one with multiple blocks.
 
     Subsequent paragraphs are indented to show that theybelong to the previous footnote.
@@ -25,7 +24,7 @@ Here is a footnote reference[^1], another[^†], and optionally there are inline
         { some.code }
 
     The whole paragraph can be indented, or just the first
-    line.  In this way, multi-paragraph footnotes work like
+    line. In this way, multi-paragraph footnotes work like
     multi-paragraph list items.
 
 This paragraph won’t be part of the note, because it isn’t indented. Hm.

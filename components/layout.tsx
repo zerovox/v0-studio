@@ -1,10 +1,10 @@
-import Footer from './footer'
-import Meta from './meta'
+import Footer from "./footer";
+import Meta from "./meta";
 
 type Props = {
-  preview?: boolean
-  children: React.ReactNode
-}
+  preview?: boolean;
+  children: React.ReactNode;
+};
 
 const Layout = ({ children }: Props) => {
   return (
@@ -15,7 +15,7 @@ const Layout = ({ children }: Props) => {
       </div>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

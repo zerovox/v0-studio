@@ -1,15 +1,15 @@
-import DateFormatter from './date-formatter'
-import Link from 'next/link'
-import Author from '../types/author'
+import DateFormatter from "./date-formatter";
+import Link from "next/link";
+import Author from "../types/author";
 
 type Props = {
-  title: string
-  coverImage: string
-  date: string
-  excerpt: string
-  author: Author
-  slug: string
-}
+  title: string;
+  coverImage: string;
+  date: string;
+  excerpt: string;
+  author: Author;
+  slug: string;
+};
 
 const HeroPost = ({
   title,
@@ -37,7 +37,7 @@ const HeroPost = ({
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default HeroPost
+export default HeroPost;

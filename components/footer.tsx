@@ -1,4 +1,4 @@
-import Container from './container'
+import Container from "./container";
 
 const Footer = () => {
   return (
@@ -11,7 +11,7 @@ const Footer = () => {
         </div>
       </Container>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

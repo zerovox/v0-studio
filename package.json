@@ -5,6 +5,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "lint": "prettier -w .",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -26,6 +27,7 @@
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.2.1",
     "tailwindcss": "^1.4.0"
   },
   "license": "MIT"
