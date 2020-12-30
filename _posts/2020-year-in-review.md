@@ -1,6 +1,6 @@
 ---
 title: "2020 in Review"
-excerpt: "Well."
+excerpt: "A recap."
 date: "2020-03-16T05:35:07.322Z"
 ---
 

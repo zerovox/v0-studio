@@ -1,4 +1,5 @@
 .next
 build
+out
 coverage
 package-lock.json
