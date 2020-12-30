@@ -12,17 +12,20 @@ Venenatis cras sed felis eget velit. Consectetur libero id faucibus nisl tincidu
 
 ## Lorem Ipsum
 
-Tristique senectus et netus et malesuada fames ac turpis. Ridiculous mus mauris vitae ultricies leo integer malesuada nunc vel. In mollis nunc sed id semper. Egestas tellus rutrum tellus pellentesque. Phasellus vestibulum lorem sed risus ultricies tristique nulla. Quis blandit turpis cursus in hac habitasse platea dictumst quisque. Eros donec ac odio tempor orci dapibus ultrices. Aliquam sem et tortor consequat id porta nibh. Adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla. Diam vulputate ut pharetra sit amet. Ut tellus elementum sagittis vitae et leo. Arcu non odio euismod lacinia at quis risus sed vulputate.
+Tristique^[whoop.] senectus et netus et malesuada fames ac turpis. Ridiculous mus mauris vitae ultricies leo integer malesuada nunc vel. In mollis nunc sed id semper. Egestas tellus rutrum tellus pellentesque. Phasellus vestibulum lorem sed risus ultricies tristique nulla. Quis blandit turpis cursus in hac habitasse platea dictumst quisque. Eros donec ac odio tempor orci dapibus ultrices. Aliquam sem et tortor consequat id porta nibh. Adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla. Diam vulputate ut pharetra sit amet. Ut tellus elementum sagittis vitae et leo. Arcu non odio euismod lacinia at quis risus sed vulputate.
 
+Here is a footnote reference[^1], another[^†], and optionally there are inline notes.^[you can type them inline, which may be easier, since you don’t have to pick an identifier and move down to type the note.]
 
-Here's a simple footnote,[^1] and here's a longer one.[^bignote]
+[^1]: Here is the footnote.
 
-[^1]: This is the first footnote.
+[^†]: Here’s one with multiple blocks.
 
-[^bignote]: Here's one with multiple paragraphs and code.
+    Subsequent paragraphs are indented to show that theybelong to the previous footnote.
 
-    Indent paragraphs to include them in the footnote.
+        { some.code }
 
-    `{ my code }`
+    The whole paragraph can be indented, or just the first
+    line.  In this way, multi-paragraph footnotes work like
+    multi-paragraph list items.
 
-    Add as many paragraphs as you like.
+This paragraph won’t be part of the note, because it isn’t indented. Hm.

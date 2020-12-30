@@ -22,6 +22,7 @@ const Index = ({ allPosts }: Props) => {
           <Intro />
           {allPosts.map(post =>
               <HeroPost
+                  key={post.slug}
                   title={post.title}
                   coverImage={post.coverImage}
                   date={post.date}
