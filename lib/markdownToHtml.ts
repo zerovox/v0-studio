@@ -20,10 +20,6 @@ export default async function markdownToHtml(markdown: string) {
       }
     }
 
-
-
-
-
     let ident = 1;
     while (footnoteHtmlByIdentifier[ident] === undefined) {
       ident++;
