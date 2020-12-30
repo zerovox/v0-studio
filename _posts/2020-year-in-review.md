@@ -2,8 +2,6 @@
 title: "2020 in Review"
 excerpt: "Well."
 date: "2020-03-16T05:35:07.322Z"
-author:
-  name: Tim
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore

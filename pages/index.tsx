@@ -25,7 +25,6 @@ const Index = ({ allPosts }: Props) => {
               key={post.slug}
               title={post.title}
               date={post.date}
-              author={post.author}
               slug={post.slug}
               excerpt={post.excerpt}
             />

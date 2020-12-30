@@ -34,9 +34,8 @@ const Post = ({ post }: Props) => {
                 <title>
                   {post.title} | {PAGE_TITLE}
                 </title>
-                {post.ogImage && <meta property="og:image" content={post.ogImage.url} />}
               </Head>
-              <PostHeader title={post.title} date={post.date} author={post.author} />
+              <PostHeader title={post.title} date={post.date} />
               <PostBody content={post.content} />
             </article>
           </>
