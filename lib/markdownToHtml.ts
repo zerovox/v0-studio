@@ -6,7 +6,7 @@ import { Node } from "unist";
 import { VFile } from "vfile";
 import unified, { Processor } from "unified";
 
-function identityNodeParser(this: Processor<{}>, settings: { content: Node }) {
+function identityNodeParser(this: Processor<unknown>, settings: { content: Node }) {
   this.Parser = (_text: string, _file: VFile) => settings.content;
 }
 

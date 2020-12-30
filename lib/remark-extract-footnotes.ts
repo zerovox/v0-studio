@@ -7,7 +7,7 @@ export default function (settings: {
   generateIdentifier: () => string;
   footnoteCallback: (identifier: string, content: Node[]) => void;
 }): Transformer {
-  return function transformer(tree, file): void {
+  return function transformer(tree): void {
     visit<FootnoteDefinition>(tree, "footnoteDefinition", (node, index, parent) => {
       settings.footnoteCallback(node.identifier, node.children);
       parent?.children.splice(index, 1);
@@ -26,7 +26,7 @@ export default function (settings: {
       return [visit.SKIP, index];
     });
 
-    visit<FootnoteReference>(tree, "footnoteReference", (node) => {
+    visit<FootnoteReference>(tree, "footnoteReference", (_node) => {
       // TODO: anything useful to do here?
       // console.log(node);
     });
