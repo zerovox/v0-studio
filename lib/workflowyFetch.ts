@@ -61,7 +61,8 @@ function extractShareId(bodyContent: string) {
 }
 
 export default async function fetchWorkflowyTree(id: string) {
-  const initRequest = await fetch(`https://workflowy.com/s/inspiration/${id}`, {
+  const url = `https://workflowy.com/s/${id}`;
+  const initRequest = await fetch(url, {
     headers: initialHeaders,
     body: undefined,
     method: "GET",

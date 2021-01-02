@@ -1,13 +1,15 @@
 import remark from "remark";
 import html from "remark-html";
-import footnotes from "remark-footnotes";
-import extractFootnotes from "./remark-extract-footnotes";
+import directive from "remark-directive";
+import customDirectives from "./remark-custom-directives";
 import { Node } from "unist";
 import { VFile } from "vfile";
 import unified, { Processor } from "unified";
 
-function identityNodeParser(this: Processor<unknown>, settings: { content: Node }) {
-  this.Parser = (_text: string, _file: VFile) => settings.content;
+function identityNodeParser(node: Node) {
+  return function (this: Processor<unknown>) {
+    this.Parser = (_text: string, _file: VFile) => node;
+  };
 }
 
 export default function markdownToHtml(markdown: string) {
@@ -21,24 +23,25 @@ export default function markdownToHtml(markdown: string) {
     }
 
     let ident = 1;
-    while (footnoteHtmlByIdentifier[ident] === undefined) {
+    while (footnoteHtmlByIdentifier[ident] !== undefined) {
       ident++;
     }
     return `${ident}`;
   };
 
-  const footnoteCallback = (identifier: string, blocks: Node[]) => {
+  const createFootnote = async (blocks: Node[]) => {
+    const identifier = generateIdentifier();
+    footnoteHtmlByIdentifier[identifier] = "";
     for (const content of blocks) {
-      const block = unified().use(identityNodeParser, { content }).use(html).processSync("");
-
-      footnoteHtmlByIdentifier[identifier] = footnoteHtmlByIdentifier[identifier] ?? "";
+      const block = await unified().use(identityNodeParser(content)).use(html).process("");
       footnoteHtmlByIdentifier[identifier] += block.toString();
     }
+    return identifier;
   };
 
   return remark()
-    .use(footnotes, { inlineNotes: true })
-    .use(extractFootnotes, { footnoteCallback, generateIdentifier })
+    .use(directive)
+    .use(customDirectives, { createFootnote })
     .use(html)
     .process(markdown)
     .then((result) => ({ content: result.toString(), footnotes: footnoteHtmlByIdentifier }));
