@@ -2,7 +2,7 @@
 title: "2020 in Review"
 excerpt: "A recap."
 date: "2020-12-31"
-tags: ["draft", "year-in-review"]
+tags: ["year-in-review"]
 ---
 
 ## Personal
@@ -55,8 +55,8 @@ The first is an
 Alto, we'd play a hand or two over lunch every day, so COVID necessitated a virtual version to keep
 this tradition alive.] mostly built by two colleagues, I pitched in on a few aspects of the UI and
 set up the hosting, including an OAuth service:note[It was pretty hard to find a good, self-hosted
-auth service with account creation and OAuth support. In the end, I went with
-[FusionAuth](https://fusionauth.io/). ] for those who didn't want to use Google to authenticate.
+auth service with account creation and OAuth support. In the end, I went with FusionAuth] for those
+who didn't want to use Google to authenticate.
 
 Later in the year, as Google Play Music disappeared and was "replaced" by Youtube Music, I decided
 to self-host an alternative to have control over my music library:note[Why not just use Spotify like

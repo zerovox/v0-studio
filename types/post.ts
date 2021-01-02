@@ -4,7 +4,7 @@ type PostType = {
   date: string;
   excerpt: string;
   content: string;
-  tags: string[];
+  tags: Array<string>;
   footnotes: {
     [identifier: string]: string;
   };

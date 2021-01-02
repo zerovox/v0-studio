@@ -1,10 +1,12 @@
 import remark from "remark";
-import html from "remark-html";
+import remark2rehype from "remark-rehype";
+import html from "rehype-stringify";
 import directive from "remark-directive";
 import customDirectives from "./remark-custom-directives";
 import { Node } from "unist";
 import { VFile } from "vfile";
 import unified, { Processor } from "unified";
+import textTreeNodeHandler from "./textTreeNode";
 
 function identityNodeParser(node: Node) {
   return function (this: Processor<unknown>) {
@@ -33,6 +35,7 @@ export default function markdownToHtml(markdown: string) {
     const identifier = generateIdentifier();
     footnoteHtmlByIdentifier[identifier] = "";
     for (const content of blocks) {
+      // TODO: this could be mdast-util-to-hast + hast-stringify
       const block = await unified().use(identityNodeParser(content)).use(html).process("");
       footnoteHtmlByIdentifier[identifier] += block.toString();
     }
@@ -42,7 +45,13 @@ export default function markdownToHtml(markdown: string) {
   return remark()
     .use(directive)
     .use(customDirectives, { createFootnote })
-    .use(html)
+    .use(remark2rehype, {
+      handlers: {
+        textTree: textTreeNodeHandler,
+      },
+      allowDangerousHtml: true,
+    })
+    .use(html, { allowDangerousHtml: true })
     .process(markdown)
     .then((result) => ({ content: result.toString(), footnotes: footnoteHtmlByIdentifier }));
 }

@@ -1,6 +1,7 @@
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
+import PostType from "../types/post";
 
 const postsDirectory = join(process.cwd(), "_posts");
 
@@ -8,25 +9,24 @@ export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
-export function getPostBySlug(slug: string, fields: string[] = []) {
+export function getPostBySlug<K extends keyof PostType>(
+  slug: string,
+  ...fields: Array<K>
+): Pick<PostType, K> {
   const realSlug = slug.replace(/\.md$/, "");
   const fullPath = join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  type Items = {
-    [key: string]: string;
-  };
-
-  const items: Items = {};
+  const items: Pick<PostType, K> = {} as Pick<PostType, K>;
 
   // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
     if (field === "slug") {
-      items[field] = realSlug;
+      items[field] = realSlug as PostType[K];
     }
     if (field === "content") {
-      items[field] = content;
+      items[field] = content as PostType[K];
     }
 
     if (data[field]) {
@@ -37,10 +37,12 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   return items;
 }
 
-export function getAllPosts(fields: string[] = []) {
+export function getAllPosts<K extends keyof PostType>(
+  ...fields: Array<K>
+): Array<Pick<PostType, K>> {
   const slugs = getPostSlugs();
   const posts = slugs
-    .map((slug) => getPostBySlug(slug, fields))
+    .map((slug) => getPostBySlug<"date" | K>(slug, "date", ...fields))
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;

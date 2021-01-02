@@ -1,9 +1,13 @@
 import visit from "./unist-util-visit-async";
 import { Transformer } from "unified";
 import { Node, Parent } from "unist";
-import { list, listItem, paragraph, html } from "mdast-builder";
+import { html, paragraph } from "mdast-builder";
 import fetchWorkflowyTree, { TextTree } from "./workflowyFetch";
 import extract from "./extract";
+
+export interface TextTreeNode extends Node {
+  textTree: TextTree;
+}
 
 export default function (settings: {
   createFootnote: (content: Node[]) => Promise<string>;
@@ -37,7 +41,11 @@ async function replacement(
         }
         const { shareId } = shareExtractor(url);
         const textTree = await fetchWorkflowyTree(shareId);
-        return list("unordered", convertTextTreeToHast(textTree));
+        return {
+          type: "textTree",
+          position: node.position,
+          textTree,
+        };
       } catch (e) {
         console.error("Failed to replace workflowy directive ", e);
         return defaultResponse;
@@ -55,14 +63,4 @@ async function replacement(
       console.error("Unknown directive name: " + node.name);
       return defaultResponse;
   }
-}
-
-function convertTextTreeToHast(textTree: TextTree): Node {
-  if (textTree.children.length === 0) {
-    return listItem(html(textTree.content));
-  }
-  return listItem([
-    html(textTree.content),
-    list("unordered", textTree.children.map(convertTextTreeToHast)),
-  ]);
 }

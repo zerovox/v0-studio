@@ -20,15 +20,17 @@ const Index = ({ allPosts }: Props) => {
         </Head>
         <Container>
           <Intro />
-          {allPosts.map((post) => (
-            <HeroPost
-              key={post.slug}
-              title={post.title}
-              date={post.date}
-              slug={post.slug}
-              excerpt={post.excerpt}
-            />
-          ))}
+          {allPosts
+            .filter((post) => !post.tags.includes("draft"))
+            .map((post) => (
+              <HeroPost
+                key={post.slug}
+                title={post.title}
+                date={post.date}
+                slug={post.slug}
+                excerpt={post.excerpt}
+              />
+            ))}
         </Container>
       </Layout>
     </>
@@ -38,7 +40,7 @@ const Index = ({ allPosts }: Props) => {
 export default Index;
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts(["title", "date", "slug", "author", "coverImage", "excerpt"]);
+  const allPosts = getAllPosts("title", "date", "slug", "excerpt", "tags");
 
   return {
     props: { allPosts },

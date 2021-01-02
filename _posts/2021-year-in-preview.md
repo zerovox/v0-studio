@@ -2,7 +2,7 @@
 title: "2021 in Preview"
 excerpt: ""
 date: "2021-01-01"
-tags: ["pre-draft", "year-in-review"]
+tags: ["draft", "year-in-review"]
 ---
 
 Excited to have a place to put things. Code.
