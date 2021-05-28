@@ -20,7 +20,7 @@ const textTreeNodeHandler: Handler = (h: H, node: Node) => {
 
 function textTreeToHast(textTree: TextTree, depth = 0): Node {
   if (textTree.children.length === 0) {
-    return u("raw", textTree.content);
+    return u("element", { tagName: "div" }, [u("raw", textTree.content)]);
   }
   return u(
     "element",

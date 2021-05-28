@@ -88,7 +88,10 @@ Mount Evans:note[The highest paved road in North America] from home with two fri
 
 ## Articles
 
-// TODO
+I keep a [running log](things-found) of most of the articles, papers, docs, etc that I read online.
+I don't know that I have stand-outs this year, though I did enjoy the Retool blog's explainers on
+[ERP](https://retool.com/blog/erp-for-engineers/) and
+[Salesforce](https://retool.com/blog/salesforce-for-engineers/).
 
 ## [Books](https://www.goodreads.com/user/show/1855107-tim)
 
