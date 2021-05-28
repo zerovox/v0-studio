@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ["./components/**/*.tsx", "./pages/**/*.tsx"],
+  purge: ["./components/**/*.tsx", "./pages/**/*.tsx", "./lib/textTreeNode.ts"],
   darkMode: false,
   theme: {
     fontFamily: {
