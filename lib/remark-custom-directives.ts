@@ -2,12 +2,8 @@ import visit from "./unist-util-visit-async";
 import { Transformer } from "unified";
 import { Node, Parent } from "unist";
 import { html, paragraph } from "mdast-builder";
-import fetchWorkflowyTree, { TextTree } from "./workflowyFetch";
+import fetchWorkflowyTree from "./workflowyFetch";
 import extract from "./extract";
-
-export interface TextTreeNode extends Node {
-  textTree: TextTree;
-}
 
 export default function (settings: {
   createFootnote: (content: Node[]) => Promise<string>;
@@ -35,7 +31,10 @@ async function replacement(
   switch (node.name) {
     case "workflowy":
       try {
-        const url = (node.attributes as any)?.["url"];
+        const attributes = (node.attributes ?? {}) as any;
+        const url = attributes["url"];
+        const collapseDepth = attributes["collapseDepth"];
+        const rand = attributes["rand"];
         if (typeof url !== "string") {
           throw new Error("Could not get workflowy URL");
         }
@@ -45,6 +44,8 @@ async function replacement(
           type: "textTree",
           position: node.position,
           textTree,
+          rand: rand != null ? Boolean(rand) : undefined,
+          collapseDepth: collapseDepth != null ? parseInt(collapseDepth) : undefined,
         };
       } catch (e) {
         console.error("Failed to replace workflowy directive ", e);

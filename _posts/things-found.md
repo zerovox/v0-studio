@@ -1,7 +1,7 @@
 ---
 title: "Things Found"
 excerpt: "An ongoing log of things I've found on the internet, and subsequently consumed."
-date: "2018-01-01"
+date: "2018-01-02"
 tags: ["things-found"]
 ---
 

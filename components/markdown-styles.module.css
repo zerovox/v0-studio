@@ -19,3 +19,9 @@
 .markdown a {
   @apply text-blue-700;
 }
+
+.markdown :global(li.list-disc) {
+  margin-left: 0.75rem;
+  padding-left: 0.125rem;
+  margin-bottom: 0.5rem;
+}
