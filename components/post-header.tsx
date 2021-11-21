@@ -10,9 +10,9 @@ const PostHeader = ({ title, date }: Props) => {
   return (
     <>
       <PostTitle>{title}</PostTitle>
-      <div className="max-w-2xl">
+      <div className="max-w-2xl text-center md:text-left">
         <div className="mb-6 text-lg">
-          <DateFormatter dateString={date} />
+          <DateFormatter dateString={date} showTime={false} />
         </div>
       </div>
     </>

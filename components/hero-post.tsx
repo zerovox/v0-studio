@@ -17,7 +17,7 @@ const HeroPost = ({ title, date, excerpt, slug }: Props) => {
         </Link>
       </h3>
       <div className="mb-4 md:mb-0 text-lg">
-        <DateFormatter dateString={date} />
+        <DateFormatter dateString={date} showTime={false} />
       </div>
       <div>
         <p className="text-lg leading-relaxed mb-4 italic">{excerpt}</p>
