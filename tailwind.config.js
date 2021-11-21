@@ -1,4 +1,5 @@
 module.exports = {
+  mode: "jit",
   purge: ["./components/**/*.tsx", "./pages/**/*.tsx", "./lib/textTreeNode.ts"],
   darkMode: false,
   theme: {
