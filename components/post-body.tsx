@@ -26,10 +26,7 @@ const PostBody = ({ content, footnotes }: Props) => {
   return (
     <>
       <div className="max-w-3xl mr-8" id="fn-container">
-        <div
-          className={markdownStyles["markdown"]}
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
+        <div className={markdownStyles["markdown"]} dangerouslySetInnerHTML={{ __html: content }} />
       </div>
       <div className="w-2/4 relative">
         {Object.keys(footnotes).map((identifier) => (

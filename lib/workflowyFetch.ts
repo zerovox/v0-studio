@@ -90,8 +90,7 @@ export default async function fetchWorkflowyTree(id: string) {
   const json: WorkflowyResponse = await shareData.json();
   return {
     content: json.projectTreeData.mainProjectTreeInfo.rootProject.nm,
-    children: json.projectTreeData.mainProjectTreeInfo.rootProjectChildren.map(
-      workflowyItemToTextTree
-    ),
+    children:
+      json.projectTreeData.mainProjectTreeInfo.rootProjectChildren.map(workflowyItemToTextTree),
   };
 }
