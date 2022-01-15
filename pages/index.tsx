@@ -6,12 +6,15 @@ import { getAllPosts } from "../lib/api";
 import Head from "next/head";
 import Post from "../types/post";
 import { PAGE_TITLE } from "../lib/constants";
+import {Activity, getActivity, getLatestActivities, getStreams, Streams} from "../lib/activities";
+import Link from "next/link";
 
 type Props = {
   allPosts: Post[];
+  activitiesWithStreams: Array<{ activity: Activity, streams: Streams }>
 };
 
-const Index = ({ allPosts }: Props) => {
+const Index = ({ allPosts, activitiesWithStreams }: Props) => {
   return (
     <>
       <Layout>
@@ -32,6 +35,11 @@ const Index = ({ allPosts }: Props) => {
               />
             ))}
         </Container>
+        {activitiesWithStreams.map(a =>
+          <Link as={`/activities/${a.activity.id}`} href="/activities/[id]" key={a.activity.id}>
+            <a className="hover:underline">{a.activity.name}</a>
+          </Link>
+        )}
       </Layout>
     </>
   );
@@ -42,7 +50,12 @@ export default Index;
 export const getStaticProps = async () => {
   const allPosts = getAllPosts("title", "date", "slug", "excerpt", "tags");
 
+  const latestActivities = await getLatestActivities();
+  const activitiesWithStreams = await Promise.all(latestActivities.map(async activity => ({
+    activity, stream: await getStreams(activity.id)
+  })));
+
   return {
-    props: { allPosts },
+    props: { allPosts, activitiesWithStreams },
   };
 };

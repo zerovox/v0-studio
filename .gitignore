@@ -33,3 +33,5 @@ yarn-error.log*
 # idea
 .idea
 .eslintcache
+
+strava-cache/
